@@ -7,4 +7,5 @@ Possible problems:
 - I've hard-coded offset to NtGdiGetEmbUFI since there is no easy way to sigscan it, which means that you will have to update this offset for your specific Windows build
 
 Video:
+
 [![video](https://img.youtube.com/vi/qdAZ8mTsTrc/0.jpg)](https://www.youtube.com/watch?v=qdAZ8mTsTrc)
