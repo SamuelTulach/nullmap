@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="console.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="mapper.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ioring.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="exploit.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="console.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="general.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="mapper.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="ioring.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="exploit.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
